@@ -1,3 +1,20 @@
 /** @format */
 
-console.log("Work!!!");
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const app = express();
+
+const PORT: number = +process.env.PORT;
+
+const start = async () => {
+  try {
+    app.listen(PORT, () => console.log("Server Work " + PORT));
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+start();
