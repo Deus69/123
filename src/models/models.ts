@@ -32,6 +32,11 @@ const TrackedorWheeled = DataBase.define("trackedorwheeled", {
   name: { type: DataTypes.STRING, allowNull: false },
 });
 
+const Brand = DataBase.define("brand", {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, allowNull: false },
+});
+
 User.hasOne(Basket);
 Basket.belongsTo(User);
 
@@ -41,4 +46,7 @@ ConstructionMachinery.belongsTo(Type);
 TrackedorWheeled.hasMany(ConstructionMachinery);
 ConstructionMachinery.belongsTo(TrackedorWheeled);
 
-export { User, Basket, ConstructionMachinery, Type, TrackedorWheeled };
+Brand.hasMany(ConstructionMachinery);
+ConstructionMachinery.belongsTo(Brand);
+
+export { User, Basket, ConstructionMachinery, Type, TrackedorWheeled, Brand };

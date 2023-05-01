@@ -13,6 +13,7 @@ class ConstructionMachineryCreate {
         Availability,
         typeId,
         trackedorwheeledId,
+        brandId,
       } = req.body;
       const createmodel = await ConstructionMachinery.create({
         name,
@@ -21,6 +22,7 @@ class ConstructionMachineryCreate {
         Availability,
         typeId,
         trackedorwheeledId,
+        brandId,
       });
       res.status(200).json(createmodel);
     } catch (e) {

@@ -5,12 +5,17 @@ import TypeCreate from "../controllers/typeController";
 import TrackedorWheeledCreate from "../controllers/trackedorwheeledController";
 import ConstructionMachineryCreate from "../controllers/constructionMachineryContoller";
 import UserController from "../controllers/userController";
+import BrandCreate from "../controllers/brandController";
 
 const router = Router();
 
 router.post("/typecreate", TypeCreate.create);
 router.get("/typegetall", TypeCreate.getAll);
 router.delete("/typedelete", TypeCreate.delete);
+
+router.post("/brandcreate", BrandCreate.create);
+router.get("/brandgetall", BrandCreate.getAll);
+router.delete("/branddelete", BrandCreate.delete);
 
 router.post("/trackedorWheeledcreate", TrackedorWheeledCreate.create);
 router.get("/trackedorWheeledgetall", TrackedorWheeledCreate.getAll);
