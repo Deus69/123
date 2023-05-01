@@ -93,11 +93,11 @@ var UserController = /** @class */ (function () {
                     case 1:
                         user = _b.sent();
                         if (!user) {
-                            res.status(403).json({ message: "Пользователь не найден" });
+                            return [2 /*return*/, res.status(403).json({ message: "Пользователь не найден" })];
                         }
                         comparePassword = bcrypt_1.default.compareSync(password, user.dataValues.password);
                         if (!comparePassword) {
-                            res.status(403).json({ message: "Указан неверный пароль" });
+                            return [2 /*return*/, res.status(403).json({ message: "Указан неверный пароль" })];
                         }
                         token = jsonwebtoken_1.default.sign({ id: user.dataValues.id, email: email, role: user.dataValues.role }, process.env.SECRET_KEY, { expiresIn: "24h" });
                         return [2 /*return*/, res.json({ token: token })];

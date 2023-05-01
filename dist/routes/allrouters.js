@@ -9,10 +9,14 @@ var typeController_1 = __importDefault(require("../controllers/typeController"))
 var trackedorwheeledController_1 = __importDefault(require("../controllers/trackedorwheeledController"));
 var constructionMachineryContoller_1 = __importDefault(require("../controllers/constructionMachineryContoller"));
 var userController_1 = __importDefault(require("../controllers/userController"));
+var brandController_1 = __importDefault(require("../controllers/brandController"));
 var router = (0, express_1.Router)();
 router.post("/typecreate", typeController_1.default.create);
 router.get("/typegetall", typeController_1.default.getAll);
 router.delete("/typedelete", typeController_1.default.delete);
+router.post("/brandcreate", brandController_1.default.create);
+router.get("/brandgetall", brandController_1.default.getAll);
+router.delete("/branddelete", brandController_1.default.delete);
 router.post("/trackedorWheeledcreate", trackedorwheeledController_1.default.create);
 router.get("/trackedorWheeledgetall", trackedorwheeledController_1.default.getAll);
 router.get("/trackedorWheeledgetone", trackedorwheeledController_1.default.getOne);

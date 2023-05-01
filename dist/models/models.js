@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrackedorWheeled = exports.Type = exports.ConstructionMachinery = exports.Basket = exports.User = void 0;
+exports.Brand = exports.TrackedorWheeled = exports.Type = exports.ConstructionMachinery = exports.Basket = exports.User = void 0;
 var database_1 = __importDefault(require("../database/database"));
 var sequelize_1 = __importDefault(require("sequelize"));
 var User = database_1.default.define("user", {
@@ -36,9 +36,16 @@ var TrackedorWheeled = database_1.default.define("trackedorwheeled", {
     name: { type: sequelize_1.default.STRING, allowNull: false },
 });
 exports.TrackedorWheeled = TrackedorWheeled;
+var Brand = database_1.default.define("brand", {
+    id: { type: sequelize_1.default.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: sequelize_1.default.STRING, allowNull: false },
+});
+exports.Brand = Brand;
 User.hasOne(Basket);
 Basket.belongsTo(User);
 Type.hasMany(ConstructionMachinery);
 ConstructionMachinery.belongsTo(Type);
 TrackedorWheeled.hasMany(ConstructionMachinery);
 ConstructionMachinery.belongsTo(TrackedorWheeled);
+Brand.hasMany(ConstructionMachinery);
+ConstructionMachinery.belongsTo(Brand);

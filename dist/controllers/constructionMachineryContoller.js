@@ -43,12 +43,12 @@ var ConstructionMachineryCreate = /** @class */ (function () {
     }
     ConstructionMachineryCreate.prototype.create = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, name_1, description, quantity, Availability, typeId, trackedorwheeledId, createmodel, e_1;
+            var _a, name_1, description, quantity, Availability, typeId, trackedorwheeledId, brandId, createmodel, e_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, name_1 = _a.name, description = _a.description, quantity = _a.quantity, Availability = _a.Availability, typeId = _a.typeId, trackedorwheeledId = _a.trackedorwheeledId;
+                        _a = req.body, name_1 = _a.name, description = _a.description, quantity = _a.quantity, Availability = _a.Availability, typeId = _a.typeId, trackedorwheeledId = _a.trackedorwheeledId, brandId = _a.brandId;
                         return [4 /*yield*/, models_1.ConstructionMachinery.create({
                                 name: name_1,
                                 description: description,
@@ -56,6 +56,7 @@ var ConstructionMachineryCreate = /** @class */ (function () {
                                 Availability: Availability,
                                 typeId: typeId,
                                 trackedorwheeledId: trackedorwheeledId,
+                                brandId: brandId,
                             })];
                     case 1:
                         createmodel = _b.sent();

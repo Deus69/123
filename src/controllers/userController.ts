@@ -35,14 +35,14 @@ class UserController {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      res.status(403).json({ message: "Пользователь не найден" });
+      return res.status(403).json({ message: "Пользователь не найден" });
     }
     let comparePassword = bcrypt.compareSync(
       password,
       user.dataValues.password
     );
     if (!comparePassword) {
-      res.status(403).json({ message: "Указан неверный пароль" });
+      return res.status(403).json({ message: "Указан неверный пароль" });
     }
     const token = jwt.sign(
       { id: user.dataValues.id, email, role: user.dataValues.role },
