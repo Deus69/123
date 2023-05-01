@@ -48,7 +48,45 @@ class ConstructionMachineryCreate {
       res.status(400).json(e);
     }
   }
-  z;
+
+  async ToRent(req: Request, res: Response) {
+    try {
+      const id = req.query.id;
+      const model = await ConstructionMachinery.findOne({ where: { id: id } });
+      const quantitymodel: number = model.dataValues.quantity;
+      const updateAvailability = async () => {
+        await ConstructionMachinery.update(
+          {
+            quantity:
+              (
+                await ConstructionMachinery.findOne({ where: { id: id } })
+              ).dataValues.quantity + 1,
+          },
+          { where: { id: id } }
+        );
+      };
+      if (quantitymodel > 0 && quantitymodel == 1) {
+        await ConstructionMachinery.update(
+          { quantity: quantitymodel - 1, Availability: false },
+          { where: { id: id } }
+        );
+        setTimeout(updateAvailability, 10000);
+      }
+
+      if (quantitymodel > 0) {
+        await ConstructionMachinery.update(
+          { quantity: quantitymodel - 1 },
+          { where: { id: id } }
+        );
+        setTimeout(updateAvailability, 10000);
+      } else {
+        return res.status(400).json({ message: "Техника недоступен" });
+      }
+    } catch (e) {
+      res.status(400).json(e);
+    }
+  }
+
   async delete(req: Request, res: Response) {
     try {
       const id = req.query;

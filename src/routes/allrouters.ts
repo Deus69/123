@@ -23,5 +23,6 @@ router.delete(
   "/constructionMachinerydelete",
   ConstructionMachineryCreate.delete
 );
+router.post("/constructionMachineryToRent", ConstructionMachineryCreate.ToRent);
 
 export default router;
