@@ -16,8 +16,8 @@ class TypeCreate {
 
   async getAll(req: Request, res: Response) {
     try {
-      const allMessege = await Type.findAll();
-      res.status(200).json(allMessege);
+      const getallmodels = await Type.findAll();
+      res.status(200).json(getallmodels);
     } catch (e) {
       res.status(400).json(e);
     }
