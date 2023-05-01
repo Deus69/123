@@ -44,11 +44,18 @@ var express_1 = __importDefault(require("express"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var database_1 = __importDefault(require("./database/database"));
 var allrouters_1 = __importDefault(require("./routes/allrouters"));
+var logger_1 = __importDefault(require("./logger"));
 dotenv_1.default.config();
 var app = (0, express_1.default)();
 var PORT = +process.env.PORT;
 app.use(express_1.default.json());
 app.use("/api", allrouters_1.default);
+logger_1.default.error("error");
+logger_1.default.warn("warn");
+logger_1.default.info("info");
+logger_1.default.verbose("verbose");
+logger_1.default.debug("debag");
+logger_1.default.silly("silly");
 var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     var e_1;
     return __generator(this, function (_a) {
@@ -61,7 +68,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 return [4 /*yield*/, database_1.default.authenticate()];
             case 2:
                 _a.sent();
-                app.listen(PORT, function () { return console.log("Server Work " + PORT); });
+                app.listen(PORT, function () { return logger_1.default.info("Server Work " + PORT); });
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();

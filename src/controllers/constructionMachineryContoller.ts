@@ -61,8 +61,13 @@ class ConstructionMachineryCreate {
               (
                 await ConstructionMachinery.findOne({ where: { id: id } })
               ).dataValues.quantity + 1,
+            Availability: true,
           },
           { where: { id: id } }
+        );
+        console.log(
+          (await ConstructionMachinery.findOne({ where: { id } })).dataValues,
+          "WORK!!!"
         );
       };
       if (quantitymodel > 0 && quantitymodel == 1) {
@@ -73,7 +78,7 @@ class ConstructionMachineryCreate {
         setTimeout(updateAvailability, 10000);
       }
 
-      if (quantitymodel > 0) {
+      if (quantitymodel > 1) {
         await ConstructionMachinery.update(
           { quantity: quantitymodel - 1 },
           { where: { id: id } }
@@ -82,6 +87,7 @@ class ConstructionMachineryCreate {
       } else {
         return res.status(400).json({ message: "Техника недоступен" });
       }
+      res.status(200).json({ message: "Work" });
     } catch (e) {
       res.status(400).json(e);
     }

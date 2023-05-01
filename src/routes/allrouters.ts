@@ -4,6 +4,7 @@ import { Router } from "express";
 import TypeCreate from "../controllers/typeController";
 import TrackedorWheeledCreate from "../controllers/trackedorwheeledController";
 import ConstructionMachineryCreate from "../controllers/constructionMachineryContoller";
+import UserController from "../controllers/userController";
 
 const router = Router();
 
@@ -24,5 +25,8 @@ router.delete(
   ConstructionMachineryCreate.delete
 );
 router.post("/constructionMachineryToRent", ConstructionMachineryCreate.ToRent);
+
+router.post("/registration", UserController.registration);
+router.post("/login", UserController.login);
 
 export default router;
